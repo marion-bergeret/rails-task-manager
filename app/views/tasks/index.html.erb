@@ -1,0 +1,30 @@
+<h1>Task list:</h1>
+
+<fieldset>
+  <% @tasks.each do |t| %>
+    <% if t.completed %>
+      <div>
+        <input type="checkbox" name="task" checked>
+        <label for="task"><%= link_to t.title, "tasks/#{t.id}" %></label>
+        <%= link_to "Update", "tasks/#{t.id}/edit"  %>
+        <%= link_to "Delete", "tasks/#{t.id}", method: :delete, data: { confirm: "Are you sure you wish to delete this task?" }   %>
+       </div>
+    <% else %>
+      <div>
+        <input type="checkbox" name="task">
+        <label for="task"><%= link_to t.title, "tasks/#{t.id}" %></label>
+        <%= link_to "Update", "tasks/#{t.id}/edit"  %>
+        <%= link_to "Delete", "tasks/#{t.id}", method: :delete, data: { confirm: "Are you sure you wish to delete this task?" }  %>
+      </div>
+    <% end %>
+  <% end %>
+</fieldset>
+
+<div>
+  <%= link_to "Create a new task", tasks_new_path  %>
+</div>
+<div>
+
+</div>
+
+
